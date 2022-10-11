@@ -4,13 +4,13 @@ import Recipe from './components/Recipe/Recipe';
 import Loading from '../../components/Loading/Loading';
 import Search from './components/Search/Search';
 import { ApiContext } from '../../context/ApiContext';
-import { useFetchData } from '../../hooks';
+import { useFetchRecipes } from '../../hooks';
 
 export default function HomePage() {
   const [filter, setFilter] = useState('');
   const [page, setPage] = useState(1);
   const BASE_URL_API = useContext(ApiContext);
-  const [[recipes, setRecipes], isLoading] = useFetchData(BASE_URL_API, page);
+  const [[recipes, setRecipes], isLoading] = useFetchRecipes(page);
 
   async function updateRecipe(updatedRecipe) {
     try {
